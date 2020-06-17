@@ -1,4 +1,4 @@
-package com.oelderoth.lightweaver.http.domain.v1
+package com.oelderoth.lightweaver.http.v1.domain
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
@@ -15,7 +15,7 @@ sealed class ColorSource {
 
     @Serializable
     @SerialName("Gradient")
-    class GradientColorSource(val uid: Int, val gradient: Gradient, val end: Color, val duration: Int, val loop: Boolean, val easing: EasingFunction, val pixelOffsets: PixelOffset) : ColorSource()
+    class GradientColorSource(val uid: Int, val gradient: Gradient, val duration: Int, val loop: Boolean, val easing: EasingFunction, val pixelOffsets: PixelOffset) : ColorSource()
 
     @Serializable
     @SerialName("HsvMeander")

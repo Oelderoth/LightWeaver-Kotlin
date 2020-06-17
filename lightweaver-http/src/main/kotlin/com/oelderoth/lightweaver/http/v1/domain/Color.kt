@@ -1,4 +1,4 @@
-package com.oelderoth.lightweaver.http.domain.v1
+package com.oelderoth.lightweaver.http.v1.domain
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
