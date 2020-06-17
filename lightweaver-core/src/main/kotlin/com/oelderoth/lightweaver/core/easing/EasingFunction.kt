@@ -1,3 +1,23 @@
 package com.oelderoth.lightweaver.core.easing
 
-abstract class EasingFunction(val name: String)
+enum class EasingFunction: IEasingFunction {
+    Linear,
+    QuadraticIn,
+    QuadraticOut,
+    QuadraticInOut,
+    CubicIn,
+    CubicOut,
+    CubicInOut,
+    QuarticIn,
+    QuarticOut,
+    QuarticInOut,
+    QuinticIn,
+    QuinticOut,
+    QuinticInOut,
+    ExponentialIn,
+    ExponentialOut,
+    ExponentialInOut,
+    SinusoidalIn,
+    SinusoidalOut,
+    SinusoidalInOut
+}
