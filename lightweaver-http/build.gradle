@@ -1,5 +1,11 @@
+plugins {
+    id 'org.jetbrains.kotlin.plugin.serialization' version '1.3.70'
+}
+
 group 'com.oelderoth.lightweaver'
 version '0.0.1-SNAPSHOT'
 
 dependencies {
+    implementation project(':lightweaver-core')
+    implementation('org.jetbrains.kotlinx:kotlinx-serialization-runtime:0.20.0')
 }
