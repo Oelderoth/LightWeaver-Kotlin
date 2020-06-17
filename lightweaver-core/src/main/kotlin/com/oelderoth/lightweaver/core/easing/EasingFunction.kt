@@ -1,23 +1,25 @@
 package com.oelderoth.lightweaver.core.easing
 
-enum class EasingFunction: IEasingFunction {
-    Linear,
-    QuadraticIn,
-    QuadraticOut,
-    QuadraticInOut,
-    CubicIn,
-    CubicOut,
-    CubicInOut,
-    QuarticIn,
-    QuarticOut,
-    QuarticInOut,
-    QuinticIn,
-    QuinticOut,
-    QuinticInOut,
-    ExponentialIn,
-    ExponentialOut,
-    ExponentialInOut,
-    SinusoidalIn,
-    SinusoidalOut,
-    SinusoidalInOut
+sealed class EasingFunction {
+    object Linear: EasingFunction()
+    object QuadraticIn: EasingFunction()
+    object QuadraticOut: EasingFunction()
+    object QuadraticInOut: EasingFunction()
+    object CubicIn: EasingFunction()
+    object CubicOut: EasingFunction()
+    object CubicInOut: EasingFunction()
+    object QuarticIn: EasingFunction()
+    object QuarticOut: EasingFunction()
+    object QuarticInOut: EasingFunction()
+    object QuinticIn: EasingFunction()
+    object QuinticOut: EasingFunction()
+    object QuinticInOut: EasingFunction()
+    object ExponentialIn: EasingFunction()
+    object ExponentialOut: EasingFunction()
+    object ExponentialInOut: EasingFunction()
+    object SinusoidalIn: EasingFunction()
+    object SinusoidalOut: EasingFunction()
+    object SinusoidalInOut: EasingFunction()
+    class ReverseEasingFunction(val easing: EasingFunction): EasingFunction()
+    class MirrorEasingFunction(val easing: EasingFunction): EasingFunction()
 }

@@ -6,9 +6,6 @@ import com.oelderoth.lightweaver.core.colorsource.*
 import com.oelderoth.lightweaver.core.devices.Device
 import com.oelderoth.lightweaver.core.devices.DeviceDescriptor
 import com.oelderoth.lightweaver.core.easing.EasingFunction
-import com.oelderoth.lightweaver.core.easing.IEasingFunction
-import com.oelderoth.lightweaver.core.easing.MirrorEasingFunction
-import com.oelderoth.lightweaver.core.easing.ReverseEasingFunction
 import com.oelderoth.lightweaver.core.pixeloffsets.OffsetListPixelOffset
 import com.oelderoth.lightweaver.core.pixeloffsets.PixelOffset
 import com.oelderoth.lightweaver.core.pixeloffsets.RandomPixelOffset
@@ -17,16 +14,17 @@ import com.oelderoth.lightweaver.http.v1.client.LightWeaverHttpV1Api
 import com.oelderoth.lightweaver.http.v1.domain.BrightnessPayload
 import com.oelderoth.lightweaver.http.v1.domain.Gradient
 import kotlinx.serialization.json.Json
+import kotlinx.serialization.json.JsonConfiguration
 import okhttp3.MediaType
 import retrofit2.Call
 import retrofit2.Retrofit
 
 class HttpDevice(val url: String): Device {
     private val lightweaverClient by lazy {
-        val contentType = MediaType.get("application/json")!!
+        val contentType = MediaType.get("application/json")
         val retrofit = Retrofit.Builder()
                 .baseUrl(url)
-                .addConverterFactory(Json.asConverterFactory(contentType))
+                .addConverterFactory(Json(JsonConfiguration.Stable).asConverterFactory(contentType))
                 .build()
         retrofit.create(LightWeaverHttpV1Api::class.java)
     }
@@ -85,7 +83,7 @@ class HttpDevice(val url: String): Device {
         }
     }
 
-    private fun mapEasing(easing: IEasingFunction): com.oelderoth.lightweaver.http.v1.domain.EasingFunction {
+    private fun mapEasing(easing: EasingFunction): com.oelderoth.lightweaver.http.v1.domain.EasingFunction {
         return when (easing) {
             EasingFunction.Linear -> com.oelderoth.lightweaver.http.v1.domain.EasingFunction.Linear
             EasingFunction.QuadraticIn -> com.oelderoth.lightweaver.http.v1.domain.EasingFunction.QuadraticIn
@@ -106,8 +104,8 @@ class HttpDevice(val url: String): Device {
             EasingFunction.SinusoidalIn -> com.oelderoth.lightweaver.http.v1.domain.EasingFunction.SinusoidalIn
             EasingFunction.SinusoidalOut -> com.oelderoth.lightweaver.http.v1.domain.EasingFunction.SinusoidalOut
             EasingFunction.SinusoidalInOut -> com.oelderoth.lightweaver.http.v1.domain.EasingFunction.SinusoidalInOut
-            is MirrorEasingFunction -> com.oelderoth.lightweaver.http.v1.domain.EasingFunction.Mirror(mapEasing(easing.easing))
-            is ReverseEasingFunction -> com.oelderoth.lightweaver.http.v1.domain.EasingFunction.Reverse(mapEasing(easing.easing))
+            is EasingFunction.MirrorEasingFunction -> com.oelderoth.lightweaver.http.v1.domain.EasingFunction.Mirror(mapEasing(easing.easing))
+            is EasingFunction.ReverseEasingFunction -> com.oelderoth.lightweaver.http.v1.domain.EasingFunction.Reverse(mapEasing(easing.easing))
             else -> throw RuntimeException("Unsupported Easing Function")
         }
 
