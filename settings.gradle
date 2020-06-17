@@ -1,2 +1,2 @@
-include 'lightweaver-api', 'lightweaver-http'
+include 'lightweaver-core', 'lightweaver-http'
 
