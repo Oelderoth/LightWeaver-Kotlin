@@ -20,6 +20,6 @@ sealed class EasingFunction {
     object SinusoidalIn: EasingFunction()
     object SinusoidalOut: EasingFunction()
     object SinusoidalInOut: EasingFunction()
-    class ReverseEasingFunction(val easing: EasingFunction): EasingFunction()
-    class MirrorEasingFunction(val easing: EasingFunction): EasingFunction()
+    class Reverse(val easing: EasingFunction): EasingFunction()
+    class Mirror(val easing: EasingFunction): EasingFunction()
 }
