@@ -3,7 +3,7 @@ plugins {
 }
 
 group 'com.oelderoth.lightweaver'
-version '0.0.1'
+version '0.0.2-SNAPSHOT'
 
 dependencies {
     implementation project(':lightweaver-core')
@@ -17,7 +17,7 @@ publishing {
         publishHttp(MavenPublication) {
             groupId = 'com.oelderoth.lightweaver'
             artifactId = 'lightweaver-http'
-            version='0.0.1'
+            version='0.0.2-SNAPSHOT'
             from components.kotlin
         }
     }
