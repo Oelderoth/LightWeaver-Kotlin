@@ -1,12 +1,12 @@
 group 'com.oelderoth.lightweaver'
-version '0.0.1-SNAPSHOT'
+version '0.0.1'
 
 publishing {
     publications {
         publishCore(MavenPublication) {
             groupId = 'com.oelderoth.lightweaver'
             artifactId = 'lightweaver-core'
-            version='0.0.1-SNAPSHOT'
+            version='0.0.1'
             from components.kotlin
         }
     }
