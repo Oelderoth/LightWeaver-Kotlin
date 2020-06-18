@@ -11,3 +11,14 @@ dependencies {
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
     implementation 'com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter:0.5.0'
 }
+
+publishing {
+    publications {
+        publishHttp(MavenPublication) {
+            groupId = 'com.oelderoth.lightweaver'
+            artifactId = 'lightweaver-http'
+            version='0.0.1-SNAPSHOT'
+            from components.kotlin
+        }
+    }
+}
